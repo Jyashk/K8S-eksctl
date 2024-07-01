@@ -1,0 +1,13 @@
+kind: Pod
+apiVersion: v1
+metadata:
+ name: multicontainer
+spec:
+ containers: 
+ - name: nginx
+   image: nginx
+   ports:
+    containerPort: 80
+ - name: os
+   image: ubuntu:alpine
+   command: ["sleep", "100"]

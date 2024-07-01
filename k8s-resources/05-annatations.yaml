@@ -1,0 +1,14 @@
+kind: Pod
+apiVersion: v1
+metadata:
+ name: annotations-example
+ labels:
+    name: nginx
+    type: frontend
+ annotations: 
+    managed.by: "k8s"
+spec:
+ containers:
+  - name: nginx
+    image: nginx
+  
