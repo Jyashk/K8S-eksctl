@@ -19,14 +19,14 @@ spec:
         - name: frontend
           image: 891959/frontend:v.1.0
           ports:
-        - containerPort: 8080
-      volumeMounts:
+          - containerPort: 8080
+          volumeMounts:
+          - name: config
+          mountPath: "/etc/nginx/nginx.conf"
+          subPath: nginx.conf
+      volumes:
       - name: config
-        mountPath: "/etc/nginx/nginx.conf"
-        subPath: nginx.conf
-  volumes:
-  - name: config
-    configMap:
+        configMap:
          # Provide the name of the ConfigMap you want to mount.
-     name: frontend
+         name: frontend
          
