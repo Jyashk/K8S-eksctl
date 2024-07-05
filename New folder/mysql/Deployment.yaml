@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mysql-deployment
-  namespace: expense
+  namespace: expense1
   labels:
     app: mysql
 spec:
@@ -19,4 +19,4 @@ spec:
         - name: mysql
           image: mysql:v.1.0
           ports:
-        - containerPort: 3306
+          - containerPort: 3306
