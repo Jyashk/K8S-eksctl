@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: frontend
-  namespace: expense
+  namespace: expense1
   labels:
     app: frontend
 spec:
@@ -24,10 +24,9 @@ spec:
       - name: config
         mountPath: "/etc/nginx/nginx.conf"
         subPath: nginx.conf
-    volumes:
-         # You set volumes at the Pod level, then mount them into containers inside that Pod
-    - name: config
-      configMap:
+  volumes:
+  - name: config
+    configMap:
          # Provide the name of the ConfigMap you want to mount.
-        name: frontend
+     name: frontend
          
