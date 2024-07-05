@@ -17,6 +17,6 @@ spec:
     spec:
       containers:
         - name: mysql
-          image: mysql:v.1.0
+          image: 891959/mysql:v.1.0
           ports:
           - containerPort: 3306
