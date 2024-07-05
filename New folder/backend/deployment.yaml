@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: backend
-  namespace: expense
+  namespace: expense1
   labels:
     app: backend
 spec:
@@ -19,7 +19,7 @@ spec:
         - name: backend
           image: 891959/backend:v.1.0
           ports:
-        - containerPort: 8080
+          - containerPort: 8080
       volumeMounts:
          - name: config
            mountPath: "/mysql-properties"
