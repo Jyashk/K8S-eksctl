@@ -20,13 +20,13 @@ spec:
           image: 891959/backend:v.1.0
           ports:
           - containerPort: 8080
-      volumeMounts:
-         - name: config
-           mountPath: "/mysql-properties"
-           readOnly: true
-    volumes:
+          volumeMounts:
+          - name: config
+            mountPath: "/mysql-properties"
+            readOnly: true
+      volumes:
          # You set volumes at the Pod level, then mount them into containers inside that Pod
-    - name: config
-      configMap:
+      - name: config
+        configMap:
          # Provide the name of the ConfigMap you want to mount.
-        name: backend
+         name: backend
