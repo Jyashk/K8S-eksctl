@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-deployment
+  namespace: expense
+  labels:
+    app: frontend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+        - name: frontend
+          image: frontend:v.1.0
+          ports:
+        - containerPort: 80
+      volumeMounts:
+      - name: config
+        mountPath: "/data"
+        readOnly: true
+      volumes:
+         # You set volumes at the Pod level, then mount them into containers inside that Pod
+         - name: config
+      configMap:
+         # Provide the name of the ConfigMap you want to mount.
+         name: frontend
+         

@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: baclkend-deployment
+  labels:
+    app: backend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+        - name: backend
+          image: backend:v.1.0
+          ports:
+        - containerPort: 8080
+      volumeMounts:
+      - name: config
+        mountPath: "/mysql-properties"
+        readOnly: true
+      volumes:
+         # You set volumes at the Pod level, then mount them into containers inside that Pod
+         - name: config
+      configMap:
+         # Provide the name of the ConfigMap you want to mount.
+         name: backend
