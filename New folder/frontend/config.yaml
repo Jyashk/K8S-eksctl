@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: frontend
-  namespace: expense
+  namespace: expense1
 data:
   nginx.conf: | 
     user www-data;
