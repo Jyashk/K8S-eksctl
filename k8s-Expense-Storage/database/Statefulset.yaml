@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mysql 
+  namespace: expense1
+spec:
+  selector:
+    matchLabels:
+      component: mysql
+      purpose: db 
+      project: expense 
+  serviceName: "mysql-headless"
+  replicas: 3 # by default is 1
+  minReadySeconds: 10 # by default is 0
+  template:
+    metadata:
+      labels:
+        component: mysql
+        purpose: db 
+        project: expense 
+    spec:
+      terminationGracePeriodSeconds: 10
+      containers:
+      - name: mysql
+        image: 891959/mysql:v.1.0
+        ports:
+        - containerPort: 3306
+        volumeMounts:
+        - name: mysql
+          mountPath: /var/lib/mysql
+  volumeClaimTemplates:
+  - metadata:
+      name: mysql
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      storageClassName: "Expense-sc"
+      resources:
+        requests:
+          storage: 1Gi

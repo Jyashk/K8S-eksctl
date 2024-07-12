@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+  labels:
+    tier: backend
+    project: expense
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      tier: backend
+      project: expense
+  template:
+    metadata:
+      labels:
+        tier: backend
+        project: expense
+    spec:
+      containers:
+      - name: backend
+        image: 891959/backend:v.1.0
+        ports:
+        - containerPort: 8080
+        volumeMounts:
+         name: config
+         mountPath: "/backend"
+         readOnly: true
+      volumes:
+      - name: config
+        configMap:
+         name: backend
+          
