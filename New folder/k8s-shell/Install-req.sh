@@ -9,8 +9,11 @@ else
     echo " Youre a super user" 
 fi
 
+
 #Installing Kubectl tool
 curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+chmod +x ./kubectl
+mv kubectl /usr/local/bin/kubectl
 
 #Install Aws Cli tool 
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
